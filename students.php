@@ -4,8 +4,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Students</title>
-	<link rel="stylesheet" href="bootstrap.css">
-	<link rel="stylesheet" href="style.css">
 </head>
 <?php
 	include('utilities.php');
@@ -84,16 +82,13 @@
 						echo "<td>" . $student_full_name . "</td>";
 						echo "<td>" . $student["PHONE_NUMBER"] . "</td>";
 						echo "<td>
-							<button class='btn btn-secondary'>Edit</button>
-							<button class='btn btn-danger'>Delete</button>
+							<a href='./edit_student.php?id=$student[STUDENT_ID]'><button class='btn btn-secondary'>Edit</button></a>
+							<a href='./confirm_delete_student.php?id=$student[STUDENT_ID]'><button class='btn btn-danger'>Delete</button></a>
 						</td>";
 					echo "<tr/>";
 				}
 
 			?>
 		</table>
-
-<script src="bootstrap.js"></script>
-<script src="script.js"></script>
 </body>
 </html>

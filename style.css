@@ -16,6 +16,7 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	transition: 0.1s ease-in;
 }
 
 .pop-up-form input {
@@ -30,4 +31,12 @@ body {
 
 .pop-up-form .buttons button {
 	flex: 1;
+}
+
+.hidden-pop-up {
+	transform: translate(-50%, -50%) scale(0);
+}
+
+.shown-pop-up {
+	transform: translate(-50%, -50%) scale(1);
 }

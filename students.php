@@ -14,7 +14,7 @@
 <body>
 	<h1>Students</h1>
 	<button class="btn btn-primary mx-2" onClick="addClassTo('shown-pop-up', document.getElementById('addStudentForm'))">Add Student</button>
-	<form  class="pop-up-form hidden-pop-up" id="addStudentForm" method="POST" action="">
+	<form  class="pop-up-form hidden-pop-up" id="addStudentForm" method="POST" action="students.php">
 		<input required class="form-control" type="text" name="student_first_name" placeholder="First Name">
 		<input class="form-control" type="text" name="student_middle_names" placeholder="Middle Names">
 		<input required class="form-control" type="text" name="student_last_name" placeholder="Last Name">
@@ -50,10 +50,15 @@
 						$student_phone_number
 					);
 					$sql_insert_student->execute();
-					echo ("<p class='alert alert-success w-75 mx-auto my-4'>The Student Was Added Successfully</p>");
+					header("Location: students.php?success=1");
 				}
 				 else {
 					die("<p class='alert alert-danger w-75 mx-auto my-4'>Your data is corrupter</p>");
+				}
+			} else {
+				// GET Request 
+				if(isset($_GET["success"])){
+					echo ("<p class='alert alert-success w-75 mx-auto my-4'>The Student Was Added Successfully </p>");
 				}
 			}
 		?>

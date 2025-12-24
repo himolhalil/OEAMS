@@ -8,7 +8,7 @@
 			return false;
 		}
 	}
-
+	// edit with your own username and password
 	$conn = mysqli_connect("localhost" ,"root","new_password", "OEAMS");
 ?>
 <script src="../js/bootstrap.js"></script>

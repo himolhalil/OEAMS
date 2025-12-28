@@ -81,7 +81,6 @@
 						echo "<td>" . $teacher["PHONE_NUMBER"] . "</td>";
 						echo "<td>
 							<a href='./edit_teacher.php?id=$teacher[TEACHER_ID]'><button class='btn btn-secondary'>Edit</button></a>
-							<a href='./confirm_delete_teacher.php?id=$teacher[TEACHER_ID]'><button class='btn btn-danger'>Delete</button></a>
 						</td>";
 					echo "<tr/>";
 				}

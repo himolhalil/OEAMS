@@ -61,10 +61,6 @@
 				$course_id = filter_var($_POST["course_id"], FILTER_SANITIZE_NUMBER_INT);
 				$term_id = filter_var($_POST["term_id"], FILTER_SANITIZE_NUMBER_INT);
 				$teacher_id = filter_var($_POST["teacher_id"], FILTER_SANITIZE_NUMBER_INT);
-
-				// if (!($course_name && $course_book)) {
-				// 	die("<p class='alert alert-dangr w-75 mx-auto my-4'>Your data is too long</p>");
-				// } 
 	
 				if($conn->connect_error){
 					die("Failed Connection") . $conn->connect_error;
@@ -108,7 +104,6 @@
 				$sql_select_classes->execute();
 				$classes_data = $sql_select_classes->get_result();
 				while($class = $classes_data->fetch_assoc()){
-					// var_dump($class);
 					echo "<tr>";
 						echo "<td>" . $class["CLASS_ID"] . "</td>";
 						echo "<td>" . $class["COURSE_NAME"] . "</td>";

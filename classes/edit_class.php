@@ -9,29 +9,20 @@
 <body>
 <?php
 
-	if (!isset($_GET['id'])) die("You Must Specify A Course");
+	if (!isset($_GET['id'])) die("You Must Specify a Course");
 
 		$id = $_GET['id'];
 
-		$sql_select_class = $conn->prepare("SELECT * FROM CLASS natural join COURSE natural join TEACHER natural join TERM where CLASS");
-		$sql_select_class->execute();
-		$classes = $sql_select_class->get_result();
-		echo "<form  class='pop-up-form' id='addClassForm' method='POST' action='classes.php?id=$id'>
+		$sql_select_course = $conn->prepare("SELECT * FROM COURSE");
+		$sql_select_course->execute();
+		$courses = $sql_select_course->get_result();
+
+		echo "<form  class='pop-up-form' method='POST' action='edit_class.php?id=$id'>
 			<label for='course_id'>Choose The Course Name</label>
 			<select class='form-select' name='course_id' id='course_id'> ";
-
-				while ($class = $classes->fetch_assoc()){
-					$class_id = $class["CLASS_ID"];
-					$class_teacher = $class["TEACHER_ID"];
-					$class_course = $class["COURSE_ID"];
-					$class_term = $class["TERM_ID"];
-					var_dump($class);
-					if($id == $class['CLASS_ID']){
-						echo " <option>$class[COURSE_NAME]</option>";
-					}
-					else{
-						echo " <option>$class[COURSE_NAME]</option>";
-					}
+				while ($course = $courses->fetch_assoc()){
+					$class_course = $course["COURSE_ID"];
+					echo " <option value='$class_course'>$course[COURSE_NAME]</option>";
 				}
 			echo "
 				</select>
@@ -39,15 +30,11 @@
 				<select class='form-select' name='term_id' id='term_id'>
 			";
 
-				$sql_select_class->execute();
-				$classes = $sql_select_class->get_result();
-				while ($class = $classes->fetch_assoc()){
-					if($id == $class['CLASS_ID']){
-						echo " <option selected>$class[TERM_ID]</option>";
-					}
-					else{
-						echo " <option>$class[TERM_ID]</option>";
-					}
+				$sql_select_term = $conn->prepare("SELECT * FROM TERM");
+				$sql_select_term->execute();
+				$terms = $sql_select_term->get_result();
+				while ($term = $terms->fetch_assoc()){
+					echo " <option>$term[TERM_ID]</option>";
 				}
 
 			echo "
@@ -56,29 +43,26 @@
 				<select class='form-select' name='teacher_id' id='teacher_id'>
 			";
 
-				$sql_select_class->execute();
-				$classes = $sql_select_class->get_result();
-				while ($class = $classes->fetch_assoc()){
-					if($id == $class['CLASS_ID']){
-						echo " <option selected>$class[LAST_NAME]</option>";
-					}
-					else{
-						echo " <option>$class[FIRST_NAME]</option>";
-					}
+				$sql_select_teacher = $conn->prepare("SELECT * FROM TEACHER");
+				$sql_select_teacher->execute();
+				$teachers = $sql_select_teacher->get_result();
+				while ($teacher = $teachers->fetch_assoc()){
+					echo " <option value='$teacher[TEACHER_ID]'>$teacher[FIRST_NAME] $teacher[LAST_NAME]</option>";
 				}
-
-			echo "<select/>";
-		echo "</form>";
+			echo 
+			"<select/>
+			<button class='btn btn-warning' type='submit'>Edit</button>
+			<a href='./classes.php'><button type='button' class='btn btn-danger'>Cancel</button></a>
+		</form>";
 			
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		$new_course_name =  $_POST["course_name"];
-		$new_course_book =  $_POST["course_book"];
-		echo "<script>alert($new_course_book)</script>";
-
-		$sql_update_student = $conn->prepare('update COURSE set COURSE_NAME = ?, COURSE_BOOK = ? where COURSE_ID = ?');
-		$sql_update_student->bind_param("ssi", $new_course_name, $new_course_book, $id);
-		$sql_update_student->execute();
-		header('Location: courses.php');
+		$new_course_id =  $_POST["course_id"];
+		$new_term_id =  $_POST["term_id"];
+		$new_teacher_id =  $_POST["teacher_id"];
+		$sql_update_class = $conn->prepare('update CLASS set COURSE_ID = ?, TERM_ID = ?, TEACHER_ID = ? where CLASS_ID = ?');
+		$sql_update_class->bind_param("iiii",$new_course_id, $new_term_id, $new_teacher_id, $id);
+		$sql_update_class->execute();
+		header('Location: classes.php');
 	}
 ?>
 </body>

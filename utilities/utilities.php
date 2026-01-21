@@ -8,8 +8,7 @@
 			return false;
 		}
 	}
-	// edit with your own username and password
-	$conn = mysqli_connect("localhost" ,"root","", "OEAMS");
+	include('../utilities/db.php');
 ?>
 <script src="../js/bootstrap.js"></script>
-<script src="../js/script.js"></script>
+<script src="../js/script.js" defer></script>

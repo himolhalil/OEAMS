@@ -43,7 +43,7 @@ body {
 	transform: translate(-50%, -50%) scale(1);
 }
 
-table, td, th {
+table, td, th, table input {
 	border: 2px solid #58037a;
 	padding: 20px;
 	text-align: center;
@@ -54,3 +54,35 @@ table {
 	width: 100%;
 }
 
+.editable-ajax-input {
+	user-select: none;
+}
+
+.toast-message {
+	transition: 3s;
+    color: green;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+	animation: small-big 0.1s;
+}
+
+.toast-message-error {
+    color: red;
+}
+.shown-toast-message {
+	transform: scale(1);
+}
+
+@keyframes small-big {
+	from {
+		top: 0;
+	}
+	to {
+		top: 2%;
+	}
+}

@@ -9,13 +9,6 @@
 
 <body>
 	<h1>Registration</h1>
-	<?php
-		// GET Request 
-		if(isset($_GET["success"])){
-			echo ("<p class='alert alert-success w-75 mx-auto my-4'>The Student Was Added Successfully </p>");
-		}
-	?>
-
 	<!--  start Showing the data -->
 	<table>
 		<tr>
@@ -36,7 +29,6 @@
 					echo "<td> $registration[TERM_ID] </td>";
 				echo "<tr/>";
 			}
-
 		?>
 	</table>
 </body>

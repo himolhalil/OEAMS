@@ -27,20 +27,21 @@
 
 	$column =  "$body[column]";
 	$row =  "$body[row]";
-	$new_value =  "$body[new_value]";
+	$new_value =  (int)htmlspecialchars("$body[new_value]");
 	if($column !== "comment"){
-		if($map_column_max[$column] <= $new_value){
-			echo json_encode([ "message" => "Not Updated Max Value is $map_column_max[$column]", "code" => 401]);
+		if($new_value == 0){
+			echo json_encode(["message" => "Value must be a number", "code" => 403]);
+			die();
+		} else if ($new_value < 0){
+			echo json_encode([ "message" => "Not Updated Min Value is 0", "code" => 403]);
+			die();
+		} else if ($new_value > $map_column_max[$column]){
+			echo json_encode([ "message" => "Not Updated Max Value is $map_column_max[$column]", "code" => 403]);
 			die();
 		}
 	}
-	$new_value = htmlspecialchars($new_value);
 
 	$sql_update = $conn->prepare("UPDATE REGISTRATION SET $map_column_name[$column] = '$new_value' where REGISTRATION_ID = $row");
 	$sql_update->execute();
-	// if($sql_update -> affected_rows > 0){
-		echo json_encode([ "message" => "Updated to $new_value Successfully", "code" => 200]);
-	// } else {
-		// echo json_encode([ "message" => "Updated to $new_value Successfully", "code" => 200]);
-	// }
+	echo json_encode([ "message" => "Updated to $new_value Successfully", "code" => 200]);
 ?>

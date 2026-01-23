@@ -27,8 +27,8 @@
 
 	$column =  "$body[column]";
 	$row =  "$body[row]";
-	$new_value =  (int)htmlspecialchars("$body[new_value]");
 	if($column !== "comment"){
+		$new_value =  (int)("$body[new_value]");
 		if($new_value == 0){
 			echo json_encode(["message" => "Value must be a number", "code" => 403]);
 			die();
@@ -41,6 +41,7 @@
 		}
 	}
 
+	$new_value =  htmlspecialchars("$body[new_value]");
 	$sql_update = $conn->prepare("UPDATE REGISTRATION SET $map_column_name[$column] = '$new_value' where REGISTRATION_ID = $row");
 	$sql_update->execute();
 	echo json_encode([ "message" => "Updated to $new_value Successfully", "code" => 200]);

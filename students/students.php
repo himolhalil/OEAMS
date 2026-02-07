@@ -51,6 +51,13 @@
 				 else {
 					die("<p class='alert alert-danger w-75 mx-auto my-4'>Your data is corrupter</p>");
 				}
+
+				if($_SERVER['HTTP_REFERER'] == "http://localhost/php/OEAMS/register_student.php"){
+					// header('Location: ' . $_SERVER['HTTP_REFERER']. "?success=1");
+					// here sould be the profile page
+				} else {
+					header("Location: students.php?success=1");
+				}
 			} else {
 				// GET Request 
 				if(isset($_GET["success"])){

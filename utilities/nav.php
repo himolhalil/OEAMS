@@ -1,5 +1,6 @@
 <nav>
 	<ul>
+		<li><a href="http://localhost/php/OEAMS/">Home</a></li>
 		<li><a href="http://localhost/php/OEAMS/students/students.php">Manage Students</a></li>
 		<li><a href="http://localhost/php/OEAMS/teachers/teachers.php">Manage Teachers</a></li>
 		<li><a href="http://localhost/php/OEAMS/terms/terms.php">Manage Terms</a></li>

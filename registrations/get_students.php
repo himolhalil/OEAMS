@@ -1,10 +1,10 @@
 <?php
-	include("../utilities/auth.php");
+	include_once("../utilities/auth.php");
 	go_login();
 ?>
 <?php
 	function get_students($id, $name, $phone){
-		include("../utilities/db.php");
+		include_once("../utilities/db.php");
 		$sql_get_students = $conn->prepare("
 		SELECT 
 		CONCAT(FIRST_NAME,' ', IFNULL(MIDDLE_NAMES, ''), ' ', LAST_NAME) AS FULL_NAME,

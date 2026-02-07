@@ -13,12 +13,12 @@
     <?php
     $start_term = isset($_POST['start_term']) ? (int) $_POST ['start_term']: 1;
     $end_term = isset($_POST['end_term']) ? (int) $_POST ['end_term']: 5;
-    $sql_enrl = $conn->prepare("SELECT term.term_id, COUNT(registration.registration_id ) AS std_count FROM term
-        LEFT JOIN class ON term.term_id = class.term_id
-        LEFT JOIN registration ON class.class_id = registration.class_id
-        WHERE term.term_id BETWEEN ? AND ?
-        GROUP BY term.term_id
-        ORDER BY term.term_id ASC
+    $sql_enrl = $conn->prepare("SELECT TERM.TERM_ID, COUNT(REGISTRATION.REGISTRATION_ID ) AS std_count FROM TERM
+        LEFT JOIN CLASS ON TERM.TERM_ID = CLASS.TERM_ID
+        LEFT JOIN REGISTRATION ON CLASS.CLASS_ID = REGISTRATION.CLASS_ID
+        WHERE TERM.TERM_ID BETWEEN ? AND ?
+        GROUP BY TERM.TERM_ID
+        ORDER BY TERM.TERM_ID ASC
     ");
     $sql_enrl->bind_param("ii", $start_term , $end_term);
     $sql_enrl->execute();
@@ -28,7 +28,7 @@
     $enrl_data = [];
 
     while($row = $enrl_res->fetch_assoc()){
-        $t_labels[] = "Term " . $row['term_id'];
+        $t_labels[] = "Term " . $row['TERM_ID'];
         $enrl_data[] = $row['std_count'];
     }
     ?>
@@ -36,11 +36,11 @@
     <div style="width: 45%; margin: 100px auto;">
          <form method="POST" action="" style="margin-bottom: 15px;">
          <label for="start_term">form the term</label>
-         <input type="number" id="start_term" name="start_term" min="1" value="<?php echo htmlspecialchars($start_term);?>"style="width: 60px;">
+         <input class="form-control" type="number" id="start_term" name="start_term" min="1" value="<?php echo htmlspecialchars($start_term);?>"style="width: 60px;">
 
          <label for="end_term">to the term</label>
-         <input type="number" id="end_term" name="end_term" min="1" value="<?php echo htmlspecialchars($end_term);?>"style="width: 60px;">
-         <button type="submit">Range display</button></form> 
+         <input class="form-control" type="number" id="end_term" name="end_term" min="1" value="<?php echo htmlspecialchars($end_term);?>"style="width: 60px;">
+         <button class="btn btn-primary mt-2" type="submit">Range display</button></form> 
         <h1>Enrollment Growth per Term</h1>
         <canvas id="enrlChart"></canvas>
     </div>
@@ -79,12 +79,12 @@
 
     <?php
      $term_id_filter = isset($_POST["term_id"]) ? (int)$_POST["term_id"]: 1;
-    $sql_top = $conn->prepare("SELECT student.first_name, (IFNULL(registration.participation_mark, 0) + IFNULL(registration.attendance_mark, 0)
-     + IFNULL(registration.mid_exam_mark, 0) + IFNULL(registration.homeworks_mark, 0) + IFNULL(registration.activites_mark, 0) 
-     + IFNULL(registration.final_exam_mark, 0)) AS total
-        FROM registration 
-        JOIN student ON registration.student_id = student.student_id
-        JOIN class ON registration.class_id = class.class_id WHERE class.term_id = ? 
+    $sql_top = $conn->prepare("SELECT STUDENT.FIRST_NAME, (IFNULL(REGISTRATION.PARTICIPATION_MARK, 0) + IFNULL(REGISTRATION.ATTENDANCE_MARK, 0)
+     + IFNULL(REGISTRATION.MID_EXAM_MARK, 0) + IFNULL(REGISTRATION.HOMEWORKS_MARK, 0) + IFNULL(REGISTRATION.ACTIVITES_MARK, 0) 
+     + IFNULL(REGISTRATION.FINAL_EXAM_MARK, 0)) AS total
+        FROM REGISTRATION 
+        JOIN STUDENT ON REGISTRATION.STUDENT_ID = STUDENT.STUDENT_ID
+        JOIN CLASS ON REGISTRATION.CLASS_ID = CLASS.CLASS_ID WHERE CLASS.TERM_ID = ? 
         ORDER BY total DESC 
         LIMIT 5
     ");
@@ -97,15 +97,15 @@
     $std_scores = [];
 
     while($row = $top_res->fetch_assoc()){
-        $std_names[] = $row['first_name'];
+        $std_names[] = $row['FIRST_NAME'];
         $std_scores[] = $row['total'];
     }
     ?>
     <div style="width: 45%; margin: auto;">
         <form method="POST" action="">
          <label for="term_input">select term</label>
-         <input type="number" id="term_input" name="term_id" min="1" value="<?php echo htmlspecialchars($term_id_filter);?>">
-         <button type="submit">First Show</button></form>    
+         <input  class="form-control" type="number" id="term_input" name="term_id" min="1" value="<?php echo htmlspecialchars($term_id_filter);?>">
+         <button class="btn btn-primary mt-2" type="submit">First Show</button></form>    
         <h2>Top 5 Students Performing thes term <?php echo htmlspecialchars($term_id_filter);?></h2>
         <canvas id="topStdChart"></canvas>
     </div>

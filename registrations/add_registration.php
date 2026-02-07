@@ -10,6 +10,7 @@
 </head>
 
 <body>
+	<?php include('../utilities/nav.php'); ?>
 	<h1>Add Registration</h1>
 	<div class="inputs-search-container d-flex">
 		<div>

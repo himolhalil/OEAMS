@@ -8,6 +8,7 @@
 </head>
 
 <body>
+	<?php include('../utilities/nav.php'); ?>
 	<h1>Registration Marks</h1>
 	<!--  start Showing the data -->
 	<table>

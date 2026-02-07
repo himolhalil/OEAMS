@@ -8,6 +8,7 @@
 </head>
 
 <body>
+	<?php include('../utilities/nav.php'); ?>
 	<h1>Terms</h1>
 	<button class="btn btn-primary mx-2" onClick="addClassTo('shown-pop-up', document.getElementById('addTermForm'))">Add Term</button>
 	<form  class="pop-up-form hidden-pop-up" id="addTermForm" method="POST" action="terms.php">

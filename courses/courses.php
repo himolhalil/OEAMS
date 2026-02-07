@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>COURSES</title>
 	<?php include('../utilities/utilities.php'); ?>
+	<?php include('../utilities/nav.php'); ?>
 </head>
 
 <body>

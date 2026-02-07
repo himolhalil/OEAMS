@@ -8,6 +8,7 @@
 </head>
 
 <body>
+	<?php include('../utilities/nav.php'); ?>
 	<h1>Teachers</h1>
 	<button class="btn btn-primary mx-2" onClick="addClassTo('shown-pop-up', document.getElementById('addTeacherForm'))">Add Teacher</button>
 	<form  class="pop-up-form hidden-pop-up" id="addTeacherForm" method="POST" action="teachers.php">

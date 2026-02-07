@@ -47,7 +47,6 @@
 						$student_phone_number
 					);
 					$sql_insert_student->execute();
-					header("Location: students.php?success=1");
 				}
 				 else {
 					die("<p class='alert alert-danger w-75 mx-auto my-4'>Your data is corrupter</p>");

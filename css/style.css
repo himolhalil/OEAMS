@@ -86,3 +86,11 @@ table {
 		top: 2%;
 	}
 }
+.inputs-search-container {
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.inputs-search-container div {
+	flex-grow: 1;
+}

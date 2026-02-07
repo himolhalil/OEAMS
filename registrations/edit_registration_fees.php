@@ -6,20 +6,13 @@
 	}
 
 	$map_column_name = [
-		'attendance' => 'ATTENDANCE_MARK',
-		'activites' => 'ACTIVITES_MARK',
-		'homeworks' => 'HOMEWORKS_MARK',
-		'mid_exam' =>  'MID_EXAM_MARK' ,
-		'final_exam' => 'FINAL_EXAM_MARK',
-		'comment' => 'TEACHER_COMMENT'
+		'price' => 'PRICE',
+		'paid' => 'PAID',
 	];
 
 	$map_column_max = [
-		'attendance' => 50,
-		'activites' => 10,
-		'homeworks' => 10,
-		'mid_exam' =>  10,
-		'final_exam' => 20,
+		'price' => 999999999999999,
+		'paid' =>  999999999999999,
 	];
 
 	$raw = file_get_contents("php://input");

@@ -17,12 +17,8 @@
 			<th>Term</th>
 			<th>Course name</th>
 			<th>Teacher name</th>
-			<th>Attendance mark</th>
-			<th>Activities</th>
-			<th>Homeworks</th>
-			<th>Mid exam</th>
-			<th>Final exam</th>
-			<th>Teacher Comment</th>
+			<th>Price</th>
+			<th>Paid</th>
 		</tr>
 
 		<?php
@@ -37,12 +33,8 @@
 					TEACHER.FIRST_NAME as TFIRST_NAME,
 					TEACHER.MIDDLE_NAMES as TMIDDLE_NAMES,
 					TEACHER.LAST_NAME as TLAST_NAME,
-					ATTENDANCE_MARK	,
-					ACTIVITES_MARK,
-					HOMEWORKS_MARK,
-					MID_EXAM_MARK,
-					FINAL_EXAM_MARK,
-					TEACHER_COMMENT,
+					PRICE,
+					PAID,
 					REGISTRATION_ID
 					FROM 
 					REGISTRATION
@@ -62,12 +54,8 @@
 					echo "<td> $registration[TERM_ID] </td>";
 					echo "<td> $registration[COURSE_NAME] </td>";
 					echo "<td>" . $teacher_full_name . "</td>";
-					echo "<td data-column='attendance' class='editable-ajax-input'>$registration[ATTENDANCE_MARK] </td>";
-					echo "<td data-column='activites' class='editable-ajax-input'>$registration[ACTIVITES_MARK] </td>";
-					echo "<td data-column='homeworks' class='editable-ajax-input'>$registration[HOMEWORKS_MARK] </td>";
-					echo "<td data-column='mid_exam' class='editable-ajax-input'>$registration[MID_EXAM_MARK] </td>";
-					echo "<td data-column='final_exam' class='editable-ajax-input'>$registration[FINAL_EXAM_MARK] </td>";
-					echo "<td data-column='comment' class='editable-ajax-input'>$registration[TEACHER_COMMENT] </td>";
+					echo "<td data-column='price' class='editable-ajax-input-fees'>$registration[PRICE] </td>";
+					echo "<td data-column='paid' class='editable-ajax-input-fees'>$registration[PAID] </td>";
 				echo "<tr/>";
 			}
 

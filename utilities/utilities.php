@@ -9,7 +9,7 @@
 		}
 	}
 	// edit with your own username and password
-	$conn = mysqli_connect("localhost" ,"root","", "OEAMS");
+	$conn = mysqli_connect("localhost" ,"root","Hamed#51234", "OEAMS");
 ?>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/script.js"></script>

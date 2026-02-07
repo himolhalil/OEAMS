@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Statistics</title>
     <?php include('../utilities/utilities.php'); ?>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+    <script src="../js/chart.js"></script>
 </head>
 <body>
 

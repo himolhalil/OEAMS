@@ -1,3 +1,7 @@
+<?php
+	include("../utilities/auth.php");
+	go_login();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

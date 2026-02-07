@@ -1,4 +1,8 @@
 <?php
+	include("../utilities/auth.php");
+	go_login();
+?>
+<?php
 	function get_students($id, $name, $phone){
 		include("../utilities/db.php");
 		$sql_get_students = $conn->prepare("

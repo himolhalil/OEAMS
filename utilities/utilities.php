@@ -9,7 +9,9 @@
 		}
 	}
 	include('../utilities/db.php');
-	session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 ?>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/script.js" defer></script>

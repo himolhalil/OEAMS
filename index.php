@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-	<?php include("./utilities/nav.php");?>
 	<h1 class="text-center mt-5">WELCOME TO OEAMS</h1>
 	<div class="text-center mt-5">
 		<a class="btn btn-primary" href="./sign_student.php">sign in as a student</a>

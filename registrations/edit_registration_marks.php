@@ -1,4 +1,8 @@
 <?php
+	include("../utilities/auth.php");
+	go_login();
+?>
+<?php
 	header("Content-Type: application/json");
 	include('../utilities/db.php');
 	if($_SERVER["REQUEST_METHOD"] !== "POST"){

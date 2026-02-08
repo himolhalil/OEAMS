@@ -1,5 +1,5 @@
 <?php
-	include("../utilities/auth.php");
+	include_once("../utilities/auth.php");
 	go_login();
 ?>
 <!DOCTYPE html>
@@ -8,11 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Statistics</title>
-    <?php include('../utilities/utilities.php'); ?>
+    <?php include_once('../utilities/utilities.php'); ?>
     <script src="../js/chart.js"></script>
 </head>
 <body>
-
     <?php
     $start_term = isset($_POST['start_term']) ? (int) $_POST ['start_term']: 1;
     $end_term = isset($_POST['end_term']) ? (int) $_POST ['end_term']: 5;

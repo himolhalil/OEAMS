@@ -1,3 +1,7 @@
+<?php
+	include("../utilities/auth.php");
+	go_login();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CLASSES</title>
 	<?php include('../utilities/utilities.php'); ?>
+	<?php include('../utilities/nav.php'); ?>
 </head>
 
 <body>

@@ -1,17 +1,16 @@
 <?php
-session_start();
 include('../utilities/utilities.php');
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['TEACHER_ID'])) {
     die("Access denied");
 }
-$teacher_id=$_SESSION['user_id'];
+$teacher_id=$_SESSION['TEACHER_ID'];
 //بروفايل المعلم
 $stmt=$conn->prepare('SELECT FIRST_NAME,MIDDLE_NAMES,LAST_NAME,PHONE_NUMBER FROM teacher WHERE TEACHER_ID=?');
 $stmt->bind_param("i",$teacher_id);
 $stmt->execute();
 
 $result=$stmt->get_result();
-$teacher=$result->fetch_assoc();x
+$teacher=$result->fetch_assoc();
 
 //كلاسات التي يدرسها المعلم 
 $stmt2=$conn->prepare('SELECT 

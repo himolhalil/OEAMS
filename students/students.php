@@ -1,3 +1,7 @@
+<?php
+	include("../utilities/auth.php");
+	go_login();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +12,7 @@
 </head>
 
 <body>
+	<?php include("../utilities/nav.php");?>
 	<h1>Students</h1>
 	<button class="btn btn-primary mx-2" onClick="addClassTo('shown-pop-up', document.getElementById('addStudentForm'))">Add Student</button>
 	<form  class="pop-up-form hidden-pop-up" id="addStudentForm" method="POST" action="students.php">
@@ -46,10 +51,16 @@
 						$student_phone_number
 					);
 					$sql_insert_student->execute();
-					header("Location: students.php?success=1");
 				}
 				 else {
 					die("<p class='alert alert-danger w-75 mx-auto my-4'>Your data is corrupter</p>");
+				}
+
+				if($_SERVER['HTTP_REFERER'] == "http://localhost/php/OEAMS/register_student.php"){
+					// header('Location: ' . $_SERVER['HTTP_REFERER']. "?success=1");
+					// here sould be the profile page
+				} else {
+					header("Location: students.php?success=1");
 				}
 			} else {
 				// GET Request 
